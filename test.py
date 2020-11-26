@@ -13,6 +13,8 @@ from trdg.string_generator import (
     create_strings_from_dict,
     create_strings_from_file,
     create_strings_from_wikipedia,
+    create_strings_randomly_one,
+    create_strings_from_dict_one,
     create_strings_randomly,
 )
 from trdg.utils import load_dict, load_fonts
@@ -404,7 +406,7 @@ def main():
     elif args.input_file != "":
         strings = create_strings_from_file(args.input_file, args.count)
     elif args.random_sequences:
-        strings = create_strings_randomly(
+        strings = create_strings_randomly_one(
             args.length,
             args.random,
             args.count,
@@ -421,7 +423,7 @@ def main():
         ):
             args.name_format = 2
     else:
-        strings = create_strings_from_dict(
+        strings = create_strings_from_dict_one(
             args.length, args.random, args.count, lang_dict
         )
 

@@ -177,9 +177,11 @@ class FakeTextDataGenerator(object):
         #############################
         # Place text with alignment #
         #############################
-
-        new_text_width, _ = resized_img.size
-
+        
+        new_text_width, new_text_height = resized_img.size
+        if(new_text_width > width):
+            resized_img = resized_img.resize((width,new_text_height ))
+            new_text_width = width
         if alignment == 0 or width == -1:
             background_img.paste(resized_img, (margin_left, margin_top), resized_img)
             background_mask.paste(resized_mask, (margin_left, margin_top))

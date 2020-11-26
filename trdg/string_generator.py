@@ -41,6 +41,20 @@ def create_strings_from_dict(length, allow_variable, count, lang_dict):
         strings.append(current_string[:-1])
     return strings
 
+def create_strings_from_dict_one(length, allow_variable, count, lang_dict):
+    """
+        Create all strings by picking X random word in the dictionnary
+    """
+
+    dict_len = len(lang_dict)
+    strings = []
+    for _ in range(0, count):
+        current_string = ""
+        for _ in range(0, rnd.randint(1, length) if allow_variable else length):
+            current_string += lang_dict[rnd.randrange(dict_len)]
+            current_string += ""
+        strings.append(current_string[:-1])
+    return strings
 
 def create_strings_from_wikipedia(minimum_length, count, lang):
     """
@@ -115,7 +129,7 @@ def create_strings_randomly(length, allow_variable, count, let, num, sym, lang):
         strings.append(current_string[:-1])
     return strings
 
-def create_strings_randomly2(length, allow_variable, count, let, num, sym, lang):
+def create_strings_randomly_one(length, allow_variable, count, let, num, sym, lang):
     """
         Create all strings by randomly sampling from a pool of characters.
     """
@@ -150,6 +164,6 @@ def create_strings_randomly2(length, allow_variable, count, let, num, sym, lang)
         for _ in range(0, rnd.randint(1, length) if allow_variable else length):
             seq_len = rnd.randint(min_seq_len, max_seq_len)
             current_string += "".join([rnd.choice(pool) for _ in range(seq_len)])
-            current_string += " "
+            current_string += ""
         strings.append(current_string[:-1])
     return strings
